@@ -1,0 +1,22 @@
+.product-brand-section{
+  margin-top: 20px;
+  margin-bottom:20px;
+}
+
+.product-brand-section img{
+  transition: all .3s ease;
+}
+
+.product-brand-section img:hover{
+  box-shadow: 0 0 10px 1px #dbdbdb ;
+}
+
+.feature-brand{
+  color: #EE1C47;
+  font-size: 35px;
+  font-weight: 400;
+  text-decoration:overline;
+  margin-bottom: 10px;
+  margin-top: 20px ;
+
+}

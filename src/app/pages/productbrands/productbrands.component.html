@@ -1,0 +1,12 @@
+<section class="product-brand-section mt-5">
+  <h4 class="text-center feature-brand">Our Featured Brands</h4>
+  <div class="row">
+    <owl-carousel-o [options]="customOptions">
+      @for (item of this.productBrands; track $index) {
+      <ng-template carouselSlide>
+        <img [src]=item.productBrandImg width="200px" height="200px" alt="productBrand" />
+      </ng-template>
+      }
+    </owl-carousel-o>
+  </div>
+</section>

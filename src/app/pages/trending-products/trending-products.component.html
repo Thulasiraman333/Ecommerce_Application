@@ -1,0 +1,69 @@
+<section class="trending-collections">
+  <h3 class="text-center p-3"> Our Trending <span style="color: #EE1C47;">Collections</span></h3>
+  <div class="container">
+    <div class="row">
+      <!-- Using Carousel -->
+      <owl-carousel-o [options]="trendingProductOptions">
+        @for (item of this.trendingProduct; track $index) {
+        <ng-template carouselSlide>
+          <div class="col-3">
+            <div class="card shadow-lg mt-4" style="width: 18rem;">
+              <img [src]="item.thumbnailUrl" alt="Course 1" />
+              <div class="card-body" style="padding:10px !important">
+                <h5 class="card-title text-danger">{{item.productName}}</h5>
+                <p class="text-muted" style="padding: 0px;margin: 0px;">Men Lounge T-shirt</p>
+                <div class="heart-icon">
+                  <i class="bx bx-heart"></i>
+                </div>
+                <div class="rating">
+                  <i class="bx bx-star"></i>
+                  <i class="bx bx-star"></i>
+                  <i class="bx bx-star"></i>
+                  <i class="bx bx-star"></i>
+                  <i class="bx bxs-star-half"></i>
+                </div>
+                <div class="price">
+                  <p style="margin-bottom: 0px !important; font-weight: 700;color:orange">${{item.productPrice}}</p>
+                </div>
+                <div class="cart mt-2 mb-1"><button class="btn cart-btn" (click)="addCart()">Add To
+                    Cart</button></div>
+                <!-- <a href="#course-details" class="btn btn-primary mx-2">View
+              Videos</a>
+            <a href="#course-details" class="btn btn-warning text-end">Enroll</a> -->
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        }
+      </owl-carousel-o>
+
+      <!-- Normal Flow -->
+      <!-- @for (item of this.trendingProduct; track $index) {
+      <div class="col-3">
+        <div class="card shadow-lg mt-4" style="width: 18rem;">
+          <img [src]="item.thumbnailUrl" alt="Course 1" />
+          <div class="card-body" style="padding:10px !important">
+            <h5 class="card-title text-danger">{{item.productName}}</h5>
+            <p class="text-muted" style="padding: 0px;margin: 0px;">Men Lounge T-shirt</p>
+            <div class="heart-icon">
+              <i class="bx bx-heart"></i>
+            </div>
+            <div class="rating">
+              <i class="bx bx-star"></i>
+              <i class="bx bx-star"></i>
+              <i class="bx bx-star"></i>
+              <i class="bx bx-star"></i>
+              <i class="bx bxs-star-half"></i>
+            </div>
+            <div class="price">
+              <p style="margin-bottom: 0px !important; font-weight: 700;color:orange">${{item.productPrice}}</p>
+            </div>
+            <div class="cart mt-2 mb-1"><button class="btn cart-btn" (click)="addCart()">Add To
+                Cart</button></div>
+          </div>
+        </div>
+      </div>
+      } -->
+    </div>
+  </div>
+</section>

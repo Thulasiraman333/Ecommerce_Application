@@ -26,15 +26,24 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
+      {
+        "glob": "**/*",
+        "input": "public",
+        "output": "/"
+      },
+      {
+        "glob": "**/*",
+        "input": "src/assets",
+        "output": "/assets"
+      }
+    ],
             "styles": [
-              "src/styles.scss"
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
+              "src/styles.scss"   
             ],
-            "scripts": []
+            "scripts": ["./node_modules/bootstrap/dist/js/bootstrap.min.js"]
           },
           "configurations": {
             "production": {
@@ -98,5 +107,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "fd0aef0f-8972-4194-8474-ab735c000d40"
   }
 }

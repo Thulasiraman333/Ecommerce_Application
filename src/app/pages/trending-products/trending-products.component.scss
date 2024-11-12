@@ -1,0 +1,37 @@
+.trending-collections{
+  margin:20px;
+}
+
+.col-3{
+  transition: all .40s;
+}
+
+.col-3 img{
+  transition: all .40s;
+}
+
+.col-3 img:hover{
+  transform: scale(1.1);
+}
+
+.cart{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightgrey;
+  border: 1px solid;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.cart-btn{
+  font-size: large; 
+  color: #2c2c2c;
+  transition: all .40s;
+}
+
+.cart-btn:hover{
+  transform: scale(1.1);
+}
