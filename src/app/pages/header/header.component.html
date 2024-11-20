@@ -1,4 +1,4 @@
-<nav class="navbar navbar-fixed-top navbar-expand-sm navbar">
+<nav class="navbar navbar-fixed-top navbar-expand-sm navbar sticky-top pt-0">
   <div class="container-fluid shadow-lg p-3 mb-0 bg-body-tertiary rounded">
     <a class="navbar-brand" href="javascript:void(0)">Logo</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -16,19 +16,39 @@
           <a class="nav-link" [routerLink]="['/products']" (click)="productPage()">Products</a>
         </li>
       </ul>
+
+      <ul class="navbar-nav searchbar">
+        <li class="nav-item nav-icon">
+          <!-- <a class="nav-link"><i class="bx bx-search"></i></a> -->
+          <form class="example-form">
+            <mat-form-field class="example-full-width" style="margin-bottom: -1.25em" appearance="outline">
+              <input type="text" placeholder="Search for Products and more" aria-label="Number" matInput
+                [formControl]="myControl" [matAutocomplete]="auto">
+              <mat-icon matPrefix>search</mat-icon>
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name">
+                  {{option.name}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
+        </li>
+      </ul>
       <!-- <form class="d-flex" style="padding-right: 20px;">
         <input class="form-control input-lg" type="text" placeholder="Search">
         <a href=""><i class="bx bx-search"></i></a>
       </form> -->
       <ul class="navbar-nav">
         <li class="nav-item nav-icon">
-          <a class="nav-link"><i class="bx bx-search"></i></a>
+          <a class="nav-link" (click)="openDialog()"><i class="bx bx-user"></i></a>
         </li>
         <li class="nav-item nav-icon">
-          <a class="nav-link"><i class="bx bx-user"></i></a>
-        </li>
-        <li class="nav-item nav-icon">
-          <a class="nav-link"><i class="bx bx-cart"></i></a>
+          <a class="nav-link" [routerLink]="['/checkout-cart']" (click)="productPage()">
+            <span class="my-custom-badge-accent" matBadge={{badgeCount}} matBadgePosition="above" matBadgeSize="medium"
+              [matBadgeHidden]="this.badgeCount == ''">
+              <mat-icon>add_shopping_cart</mat-icon>
+            </span>
+          </a>
         </li>
         <li class="nav-item nav-icon">
           <a class="nav-link"><i class='bx bx-log-out-circle bx-rotate-90'></i></a>

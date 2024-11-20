@@ -3,9 +3,9 @@
   <div class="container">
     <div class="row">
       @for (item of this.productData; track $index) {
-      <div class="col-3">
-        <div class="card shadow-lg mt-4" style="width: 18rem;">
-          <img [src]="item.thumbnailUrl" alt="Course 1" />
+      <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+        <div class="card shadow-lg mt-4">
+          <img class="img-fluid rounded" [src]="item.thumbnailUrl" alt="Course 1" />
           <div class="card-body" style="padding:10px !important">
             <h5 class="card-title text-danger">{{item.productName}}</h5>
             <p class="text-muted" style="padding: 0px;margin: 0px;">Men Lounge T-shirt</p>
@@ -20,10 +20,19 @@
               <i class="bx bxs-star-half"></i>
             </div>
             <div class="price">
-              <p style="margin-bottom: 0px !important; font-weight: 700;color:orange">${{item.productPrice}}</p>
+              <p style="margin-bottom: 0px !important; font-weight: 700;color:#EE1C47">
+                {{ item.productPrice.toString() | currency : 'INR' : 'symbol': '1.2-2' : 'en-IN' }}
+              </p>
             </div>
-            <div class="cart mt-2 mb-1"><button class="btn cart-btn" (click)="addCart()">Add To
+            @if(availableInCart(item) || item.isAvailableInCart){
+            <div class="cart mt-2 mb-1 text-white bg-danger" (click)="removeCart(item,$index)"><button
+                class="btn cart-btn" style="color: white !important;">Remove From
                 Cart</button></div>
+            }@else {
+            <div class="cart mt-2 mb-1 text-white bg-warning" (click)="addCart(item,$index)"><button
+                class="btn cart-btn">Add To
+                Cart</button></div>
+            }
           </div>
         </div>
       </div>

@@ -18,7 +18,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: lightgrey;
   border: 1px solid;
   border: none;
   border-radius: 5px;
@@ -28,8 +27,9 @@
 
 .cart-btn{
   font-size: large; 
-  color: #2c2c2c;
-  transition: all .40s;
+  color: black;
+  font-weight: 500;
+  transition: all .50s;
 }
 
 .cart-btn:hover{

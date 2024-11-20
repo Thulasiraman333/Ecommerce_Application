@@ -1,0 +1,110 @@
+<!-- <mat-horizontal-stepper [linear]="isLinear" #stepper ngClass="{{ 'last-edited-step-' + stepper.selectedIndex }}">
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Cart</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Address</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Payment</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper> -->
+@if(this.cartDetailsData && cartDetailsData.length > 0){
+<section class="cart-section mt-5">
+  <div class="container">
+    <div class="row cart-header">
+      <div class="col-sm-8 col-4 text-end">
+        <h6>Total: <span style="color: #EE1C47">{{this.badgeCount}} Items</span></h6>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row product-detail">
+      <div class="col-sm-7 col-md-8">
+        @for (item of this.cartDetailsData; track $index) {
+        <mat-card class="product-card mt-3">
+          <span class="d-flex" style="justify-content: end; margin-right: 10px;margin-top: 5px;">
+            <mat-icon (click)="ondeleteCard(item,$index)">close</mat-icon>
+          </span>
+          <mat-card-header style="padding-top: 0px !important;">
+            <mat-card-title class="text-left" style="color: #EE1C47">P&T
+              Collections</mat-card-title>
+            <mat-card-subtitle>{{item.productName}}</mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content class="m-3">
+            <div class="row">
+              <div class="col-2">
+                <img mat-card-image style="width: 100px; height: 140px;" [src]="item.thumbnailUrl" alt="Course 1">
+              </div>
+              <div class="col-4">
+                <p>Color: BLACK MIX</p>
+                <p>Size: 38-33L</p>
+                <p>In Stock</p>
+                <p><span style="color: lightseagreen">7 days</span> return available</p>
+              </div>
+              <div class="col-2">
+                <p>Price</p>
+                <p>{{ item.productPrice.toString() | currency : 'INR' : 'symbol': '1.2-2' : 'en-IN' }}</p>
+              </div>
+              <div class="col-2">
+                <p>Quantity:</p>
+                <mat-form-field appearance="outline" style="width: 80px;">
+                  <mat-select [(value)]="selectedQuantity"
+                    (selectionChange)="quantityChange($index,selectedQuantity,item)">
+                    <mat-option *ngFor="let country of quantity" [value]="country.key">
+                      {{country.value}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-2">
+                <p>Total
+                <p>
+                <p style="font-weight: 600; font-size: large;">{{item.cartTotalPrice .toString() | currency : 'INR' :
+                  'symbol': '1.2-2' :
+                  'en-IN' }}</p>
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-card-footer>
+          </mat-card-footer>
+        </mat-card>
+        }
+      </div>
+      <div class="col-sm-5 col-md-4">
+        <h3>Order Details</h3>
+      </div>
+    </div>
+  </div>
+</section>
+}@else {
+<div class="container">
+  <div class="row empty-bag">
+    <h5 class="text-center">Hey, it feels so light!</h5>
+    <p class="text-center text-secondary">There is nothing in your bag.Let's add some items.</p>
+  </div>
+</div>
+}

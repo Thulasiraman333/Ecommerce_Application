@@ -4,11 +4,13 @@ import { Router, RouterOutlet } from '@angular/router';
 import { TrendingProductsComponent } from '../trending-products/trending-products.component';
 import { ProductbrandsComponent } from '../productbrands/productbrands.component';
 import { FooterComponent } from "../footer/footer.component";
-
+import { MatInputModule } from '@angular/material/input';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet, TrendingProductsComponent, ProductbrandsComponent, FooterComponent],
+  imports: [TrendingProductsComponent,
+    ProductbrandsComponent, FooterComponent,
+    MatInputModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

@@ -9,3 +9,72 @@
   text-decoration: none;
 }
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-mdc-snack-bar-container {
+  &.success-dialog-snackbar {
+    --mdc-snackbar-container-color: #d8363a;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+    margin: 0 !important;
+    position: absolute;
+    bottom: 450px;
+    right: 580px;
+  }} 
+  .mat-mdc-snack-bar-container {
+    &.error-dialog-snackbar {
+      --mdc-snackbar-container-color: darkred;
+      --mat-mdc-snack-bar-button-color: #fff;
+      --mdc-snackbar-supporting-text-color: #fff;
+    }}
+
+// Checkout Cart Stepper 
+@mixin styleStepLine($index) {
+  .mat-horizontal-stepper-header {
+      &+.mat-stepper-horizontal-line:nth-child(#{$index}) {
+          height: 3px;
+          background-image: linear-gradient(to right, #03830b, #03830b);
+      }
+  }
+}
+
+@mixin styleEditedStepIcon($index) {
+  .mat-horizontal-stepper-header:nth-child(#{$index}) {
+      .mat-step-icon:not(.mat-step-icon-selected) {
+          background-color: red;
+      }
+  }
+}
+
+@mixin styleUnEditedStepIcon($index) {
+  .mat-horizontal-stepper-header:nth-child(#{$index}) {
+      .mat-step-icon:not(.mat-step-icon-selected) {
+          background-color: #e8e8e8;
+      }
+  }
+}
+
+.last-edited-step-1 {
+  @include styleStepLine(2);
+}
+
+.last-edited-step-2 {
+  @include styleStepLine(2);
+  @include styleStepLine(4);
+}
+.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before, .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after, [dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::after, [dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::before {width: 0!important;}
+
+
+.mat-step-header .mat-step-header-ripple {display: none;}
+.mat-step-header.cdk-keyboard-focused, .mat-step-header.cdk-program-focused, .mat-step-header:hover {
+  background-color: #fff;
+}
+.mat-stepper-label-position-bottom .mat-horizontal-stepper-header {
+  padding: 8px 0 8px 0 !important;
+  width: 35px !important;
+}
+.mat-stepper-label-position-bottom .mat-stepper-horizontal-line {
+top: 20px !important;
+}

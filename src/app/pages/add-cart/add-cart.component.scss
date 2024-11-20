@@ -1,0 +1,37 @@
+::ng-deep .mat-horizontal-stepper-header .mat-step-icon {
+  background-color: green;
+  //display: none !important;
+  }
+
+  .cart-left-block{
+  background-color: violet;
+  width: 65%;
+  
+  }
+  .cart-right-block{
+    background-color: aquamarine;
+    width: 35%;
+   
+  }
+  mat-card{
+    background-color: unset !important;
+  }
+  .delete-icon{
+    align-items: end !important;
+    float: right !important;
+  }
+  .title-cart{
+    display: flex !important;
+    align-items: center;
+    justify-content: center !important;
+    flex-direction: column;
+  }
+  mat-form-field.mat-form-field {
+    font-size: 16px;
+  }
+  .empty-bag{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:50px;
+  }

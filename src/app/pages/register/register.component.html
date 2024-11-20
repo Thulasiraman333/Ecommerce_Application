@@ -1,0 +1,78 @@
+<div class="gradient-custom-2" mat-dialog-content>
+  <div class="modal-header" style="justify-content: end;">
+    <mat-icon (click)="onCloseModal()">close</mat-icon>
+  </div>
+  <div class="modal-body text-center">
+    <div class="btn-group">
+      <button type="button" [class]="isLoginVisible ? 'btn btn-warning':'btn btn-dark'" (click)="toggleForm(true)">Sign
+        Up</button>
+      <button type="button" [class]="isLoginVisible ? 'btn btn-dark':'btn btn-warning'"
+        (click)="toggleForm(false)">Login</button>
+    </div>
+
+    <!-- Registration Details -->
+    @if(isLoginVisible){
+    <section id="registerDetail">
+      <!-- <h3 class="mt-2">Register for a course</h3> -->
+      <form class="container mt-3">
+        <div class="row mt-3">
+          <div class="col-10">
+            <div class="form-group text-start">
+              <label for="User Name" class="label-prop">User Name</label>
+              <input type="text" class="form-control" name="userName" [(ngModel)]="registerDetails.userName">
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-10">
+            <div class="form-group text-start">
+              <label class="label-prop" for="Email">Email</label>
+              <input type="text" class="form-control" name="email" [(ngModel)]="registerDetails.emailId">
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-10">
+            <div class="form-group text-start">
+              <label class="label-prop" for="Password">Password</label>
+              <input type="text" class="form-control" name="password" [(ngModel)]="registerDetails.password">
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="mt-4 text-start">
+        <button class="btn btn bg-warning text-white shadow-lg" style="margin-left: 15px;"
+          (click)="onRegisterNow()">Sign Up
+        </button>
+      </div>
+    </section>
+    }@else {
+    <!-- Login Details -->
+    <section id="loginDetail">
+      <h3 class="mt-2">Login to Your Account</h3>
+      <form class="container mt-3">
+        <div class="row mt-3">
+          <div class="col-10">
+            <div class="form-group text-start">
+              <label class="label-prop" for="Username">Username</label>
+              <input type="text" name="userName" class="form-control" [(ngModel)]="loginDetails.userName">
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-10">
+            <div class="form-group text-start">
+              <label class="label-prop" for="Password">Password</label>
+              <input type="text" name="password" class="form-control" [(ngModel)]="loginDetails.password">
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="mt-4 text-start">
+        <button class="btn btn bg-warning text-white shadow-lg" style="margin-left: 15px;" (click)="onLoginNow()">Login
+          Now</button>
+      </div>
+    </section>
+    }
+  </div>
+</div>
