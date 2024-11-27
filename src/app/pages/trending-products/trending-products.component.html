@@ -8,12 +8,18 @@
         <ng-template carouselSlide>
           <div class="col-3">
             <div class="card shadow-lg mt-4" style="width: 18rem;">
-              <img [src]="item.thumbnailUrl" alt="Course 1" />
+              <img [src]="item.thumbnailUrl" style="cursor: pointer;" alt="Course 1"
+                (click)="triggerSpecificProduct(item)" />
               <div class="card-body" style="padding:10px !important">
-                <h5 class="card-title text-danger">{{item.productName}}</h5>
-                <p class="text-muted" style="padding: 0px;margin: 0px;">Men Lounge T-shirt</p>
+                <h5 class="card-title text-danger" style="cursor: pointer;" (click)="triggerSpecificProduct(item)">
+                  {{item.productName}}</h5>
+                <p class="text-muted" style="padding: 0px;margin: 0px; cursor: pointer;"
+                  (click)="triggerSpecificProduct(item)">Men
+                  Lounge T-shirt</p>
                 <div class="heart-icon">
-                  <i class="bx bx-heart"></i>
+                  <!-- <i class="bx bx-heart"></i> -->
+                  <span class="text-muted mb-3" style="cursor: pointer;"
+                    (click)="triggerSpecificProduct(item)">Sizes:&nbsp;{{item.sizes}}</span>
                 </div>
                 <div class="rating">
                   <i class="bx bx-star"></i>

@@ -1,0 +1,199 @@
+<div class="row m-4 site-nav-container">
+  <div class="col-4 logo-container">
+    <img
+      src="https://media.istockphoto.com/id/1150644423/vector/online-shop-logo-design-template.jpg?s=612x612&w=0&k=20&c=Cri_aW_GNW9sRmN7m4g31ClyQdkE56EgjPTzCrsmqng="
+      class="secureIcon" width="100" height="100">
+    <!-- <h6 style="color: #EE1C47">P&T</h6> -->
+  </div>
+  <div class="col-4" style="color: #696b79;letter-spacing:3px;">
+    <div class="row justify-content-start checkout-steps">
+      <div class="col-1">
+        <p class="step1 active" style="cursor: pointer;" [routerLink]="['/checkout-cart']">BAG</p>
+      </div>
+      <div class="col-3 pe-0">
+        <span class="divider"></span>
+      </div>
+      <div class="col-2">
+        <p class="step2 address-active" style="cursor: pointer;">ADDRESS</p>
+      </div>
+      <div class="col-3 pe-0">
+        <span class="address-divider"></span>
+      </div>
+      <div class="col-2">
+        <p class="step3" style="cursor: pointer;">PAYMENT</p>
+      </div>
+      <div class="col-1">
+      </div>
+    </div>
+  </div>
+  <div class="col-4 text-center">
+    <div class="secureContainer">
+      <img src="https://constant.myntassets.com/checkout/assets/img/sprite-secure.png" class="secureIcon" width="26"
+        height="28">
+      <div class="secure">&nbsp;100% SECURE</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row m-2">
+    <div class="col-2"></div>
+    <div class="col-5">
+      <div class="card shadow m-2" style="background-color: #fff; color: #424553;">
+        <form [formGroup]="addressFormGroup" class="m-2">
+          <p class="contact-details">CONTACT DETAILS</p>
+          <div class="row card-body">
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" />
+              <mat-error style="font-size: smaller;" *ngIf="addressFormGroup.get('name')?.errors?.['required']">This
+                field is
+                required</mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Mobile No</mat-label>
+              <input matInput formControlName="mobileNumber" />
+              <mat-error style="font-size: smaller;"
+                *ngIf="addressFormGroup.get('mobileNumber')?.errors?.['required']">This
+                field is
+                required</mat-error>
+              <mat-error style="font-size: smaller;"
+                *ngIf="addressFormGroup.get('mobileNumber')?.errors?.['pattern']">Invaild Mobile Number </mat-error>
+            </mat-form-field>
+
+            <p class="address-details">ADDRESS</p>
+            <mat-form-field appearance="outline">
+              <mat-label>Pin Code</mat-label>
+              <input matInput formControlName="pincode" />
+              <mat-error style="font-size: smaller;" *ngIf="addressFormGroup.get('pincode')?.errors?.['required']">This
+                field is
+                required</mat-error>
+              <mat-error style="font-size: smaller;"
+                *ngIf="addressFormGroup.get('pincode')?.errors?.['minlength']">Pincode
+                should be 6 digits</mat-error>
+              <mat-error style="font-size: smaller;"
+                *ngIf="addressFormGroup.get('pincode')?.errors?.['maxlength']">Pincode
+                should be 6 digits</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Address (House No, Building, Street, Area)</mat-label>
+              <input matInput formControlName="address" />
+              <mat-error style="font-size: smaller;" *ngIf="addressFormGroup.get('address')?.errors?.['required']">This
+                field is
+                required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Locality / Town</mat-label>
+              <input matInput formControlName="locality" />
+              <mat-error style="font-size: smaller;" *ngIf="addressFormGroup.get('locality')?.errors?.['required']">This
+                field is
+                required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>District</mat-label>
+              <input matInput formControlName="district" />
+              <mat-error style="font-size: smaller;" *ngIf="addressFormGroup.get('district')?.errors?.['required']">This
+                field is
+                required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>State</mat-label>
+              <input matInput formControlName="state" />
+              <mat-error style="font-size: smaller;" *ngIf="addressFormGroup.get('state')?.errors?.['required']">This
+                field is
+                required</mat-error>
+            </mat-form-field>
+            <div class="save-address" style="justify-content: space-between;">
+              <button type="button" class="fw-3 btn text-white bg-success" [disabled]="!addressFormGroup.valid"
+                (click)="addAddressDetails()">ADD
+                ADDRESS</button>
+              <button type="button" class="fw-3 btn text-white bg-danger"
+                (click)="cancelAddressDetails()">CANCEL</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+    <div class="col-4">
+      <p class="fs-5 fw-bold text-uppercase mt-2" style="color: #EE1C47">Price
+        Details&nbsp;<span class="text-lowercase">({{this.badgeCount}}&nbsp;Items)</span></p>
+      <div class="row mt-3">
+        <div class="col-6">
+          <p class="fw-light">Shipping</p>
+        </div>
+        <div class="col-6">
+          <p class="fw-light">STANDARD DELIVERY</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p class="fw-light">Total MRP</p>
+        </div>
+        <div class="col-6">
+          <p class="fw-light">{{ this.orderDetailsData.totalMRP | currency : 'INR' : 'symbol': '1.2-2' : 'en-IN' }}
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p class="fw-light">Coupon Discount</p>
+        </div>
+        @if(this.orderDetailsData.CouponDiscount > 0){
+        <div class="col-6">
+          <p style="color: darkgreen;">-{{ this.orderDetailsData.CouponDiscount | currency : 'INR' : 'symbol':
+            '1.2-2' : 'en-IN'}}</p>
+        </div>
+        }@else {
+        <div class="col-6">
+          <p style="color: darkgreen;">{{ this.orderDetailsData.CouponDiscount | currency : 'INR' : 'symbol':
+            '1.2-2' : 'en-IN'}}</p>
+        </div>
+        }
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p class="fw-light">Platform Fee</p>
+        </div>
+        <div class="col-6">
+          <p class="fw-light">{{this.orderDetailsData.platformFee | currency : 'INR' : 'symbol': '1.2-2' : 'en-IN'}}
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p class="fw-light">Shipping Fee</p>
+        </div>
+        @if(this.orderDetailsData.shippingFee > 0){
+        <div class="col-6">
+          <p class="fw-light text-success">{{this.orderDetailsData.shippingFee | currency : 'INR' : 'symbol':
+            '1.2-2'
+            : 'en-IN'}}</p>
+        </div>
+        }@else {
+        <div class="col-6">
+          <p style="color: darkgreen;">FREE</p>
+        </div>
+        }
+      </div>
+      <mat-divider></mat-divider>
+      <div class="row mt-2">
+        <div class="col-6">
+          <p class="fw-bolder">Total Amount</p>
+        </div>
+        <div class="col-6">
+          <p class="fw-bolder">{{this.orderDetailsData.totalAmount | currency : 'INR' : 'symbol': '1.2-2' :
+            'en-IN'}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

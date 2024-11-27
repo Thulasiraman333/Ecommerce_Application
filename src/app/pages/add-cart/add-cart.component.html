@@ -1,19 +1,55 @@
+<div class="row m-4 site-nav-container">
+  <div class="col-4 logo-container">
+    <img
+      src="https://media.istockphoto.com/id/1150644423/vector/online-shop-logo-design-template.jpg?s=612x612&w=0&k=20&c=Cri_aW_GNW9sRmN7m4g31ClyQdkE56EgjPTzCrsmqng="
+      class="secureIcon" width="100" height="100">
+    <!-- <h6 style="color: #EE1C47">P&T</h6> -->
+  </div>
+  <div class="col-4" style="color: #696b79;letter-spacing:3px;">
+    <div class="row justify-content-start checkout-steps">
+      <div class="col-1">
+        <p class="step1 active" style="cursor: pointer;">BAG</p>
+      </div>
+      <div class="col-3 pe-0">
+        <span class="divider"></span>
+      </div>
+      <div class="col-2">
+        <p class="step2" style="cursor: pointer;">ADDRESS</p>
+      </div>
+      <div class="col-3 pe-0">
+        <span class="address-divider"></span>
+      </div>
+      <div class="col-2">
+        <p class="step3 address-active" style="cursor: pointer;">PAYMENT</p>
+      </div>
+      <div class="col-1">
+      </div>
+    </div>
+  </div>
+  <div class="col-4 text-center">
+    <div class="secureContainer">
+      <img src="https://constant.myntassets.com/checkout/assets/img/sprite-secure.png" class="secureIcon" width="26"
+        height="28">
+      <div class="secure">&nbsp;100% SECURE</div>
+    </div>
+  </div>
+</div>
 @if(this.cartDetailsData && cartDetailsData.length > 0){
 <section class="cart-section mt-5">
   <div class="container">
     <div class="row cart-header">
-      <div class="col-sm-8 col-4 text-end">
+      <div class="col-sm-8 col-4 text-start">
         <h6>Total: <span style="color: #EE1C47">{{this.badgeCount}} Items</span></h6>
       </div>
     </div>
   </div>
   <div class="container">
     <div class="row product-detail">
-      <div class="col-sm-7 col-md-8">
+      <div class="col-sm-6 col-md-7">
         @for (item of this.cartDetailsData; track $index) {
         <mat-card class="product-card mt-3">
           <span class="d-flex" style="justify-content: end; margin-right: 10px;margin-top: 5px;">
-            <mat-icon (click)="ondeleteCard(item,$index)">close</mat-icon>
+            <mat-icon (click)="ondeleteCard($index)">close</mat-icon>
           </span>
           <mat-card-header style="padding-top: 0px !important;">
             <mat-card-title class="text-left" style="color: #EE1C47">P&T
@@ -39,10 +75,10 @@
               <div class="col-2">
                 <p>Quantity:</p>
                 <mat-form-field appearance="outline" style="width: 80px;">
-                  <mat-select [(value)]="selectedQuantity"
-                    (selectionChange)="quantityChange($index,selectedQuantity,item)">
-                    <mat-option *ngFor="let country of quantity" [value]="country.key">
-                      {{country.value}}
+                  <mat-select [(ngModel)]="cartDetailsData[$index].selectedQuantity"
+                    (ngModelChange)="quantityChange($index,$event,item)">
+                    <mat-option *ngFor="let q of quantity" [value]="q.key">
+                      {{q.value}}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -61,8 +97,98 @@
         </mat-card>
         }
       </div>
+      <mat-divider [vertical]="true" style="height:auto;border-right-style: dotted !important"></mat-divider>
       <div class="col-sm-5 col-md-4">
-        <h3>Order Details</h3>
+        <p class="fs-5 fw-bold text-uppercase mt-2" style="color: #EE1C47">Price
+          Details&nbsp;<span class="text-lowercase">({{this.badgeCount}}&nbsp;Items)</span></p>
+        <div class="row mt-3">
+          <p>Enter Promo Code</p>
+          <div class="col-6">
+            <div class="form-group">
+              <input class="form-control" [disabled]="disablePromocode" [(ngModel)]="promoCode"
+                placeholder="Promo Code">
+            </div>
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-dark  btn-md" (click)="onPromoCodeSubmit()">Submit</button>
+          </div>
+          <a class="js-select-coupon-code mt-2" (click)="onPromoCodeSelection()">
+            Select Promo Code <span class="fa fa-angle-right"></span>
+          </a>
+        </div>
+        <div class="row mt-3">
+          <div class="col-6">
+            <p class="fw-light">Shipping</p>
+          </div>
+          <div class="col-6">
+            <p class="fw-light">STANDARD DELIVERY</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <p class="fw-light">Total MRP</p>
+          </div>
+          <div class="col-6">
+            <p class="fw-light">{{ this.orderDetailsData.totalMRP | currency : 'INR' : 'symbol': '1.2-2' : 'en-IN' }}
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <p class="fw-light">Coupon Discount</p>
+          </div>
+          @if(this.orderDetailsData.CouponDiscount > 0){
+          <div class="col-6">
+            <p style="color: darkgreen;">-{{ this.orderDetailsData.CouponDiscount | currency : 'INR' : 'symbol':
+              '1.2-2' : 'en-IN'}}</p>
+          </div>
+          }@else {
+          <div class="col-6">
+            <p style="color: darkgreen;">{{ this.orderDetailsData.CouponDiscount | currency : 'INR' : 'symbol':
+              '1.2-2' : 'en-IN'}}</p>
+          </div>
+          }
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <p class="fw-light">Platform Fee</p>
+          </div>
+          <div class="col-6">
+            <p class="fw-light">{{this.orderDetailsData.platformFee | currency : 'INR' : 'symbol': '1.2-2' : 'en-IN'}}
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <p class="fw-light">Shipping Fee</p>
+          </div>
+          @if(this.orderDetailsData.shippingFee > 0){
+          <div class="col-6">
+            <p class="fw-light text-success">{{this.orderDetailsData.shippingFee | currency : 'INR' : 'symbol':
+              '1.2-2'
+              : 'en-IN'}}</p>
+          </div>
+          }@else {
+          <div class="col-6">
+            <p style="color: darkgreen;">FREE</p>
+          </div>
+          }
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row mt-2">
+          <div class="col-6">
+            <p class="fw-bolder">Total Amount</p>
+          </div>
+          <div class="col-6">
+            <p class="fw-bolder">{{this.orderDetailsData.totalAmount | currency : 'INR' : 'symbol': '1.2-2' :
+              'en-IN'}}
+            </p>
+          </div>
+        </div>
+        <div class="row m-2">
+          <button type="button" class="btn text-white place-order" (click)="placeOrder()">PLACE
+            ORDER</button>
+        </div>
       </div>
     </div>
   </div>

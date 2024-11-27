@@ -11,9 +11,9 @@ export class SnackbarService {
 
   success(message: string, action: string = '') {
     const config = new MatSnackBarConfig();
-    config.horizontalPosition = 'center';
+    config.horizontalPosition = 'left';
     config.verticalPosition = 'bottom';
-    config.duration = 1000;
+    config.duration = 1500;
     config.panelClass = ['success-dialog-snackbar'];
     this.snackBar.open(message, action, config);
   }

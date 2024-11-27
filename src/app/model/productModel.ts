@@ -4,13 +4,27 @@ export class trendingProducts {
   productName: string
   entity_id: Number
   isAvailableInCart: boolean
+  selectedQuantity: Number
+  sizes: String
+  imageFrontView: String
+  imageBackView: String
+  imageSideView: String
+  imageFullView: String
+
+
 
   constructor() {
     this.thumbnailUrl = "",
       this.productPrice = 0,
       this.productName = "",
       this.entity_id = 0,
-      this.isAvailableInCart = false
+      this.isAvailableInCart = false,
+      this.selectedQuantity = 1,
+      this.sizes = '',
+      this.imageFrontView = '',
+      this.imageBackView = '',
+      this.imageSideView = '',
+      this.imageFullView = ''
   }
 }
 export class Products {
@@ -19,13 +33,25 @@ export class Products {
   productName: string
   entity_id: Number
   isAvailableInCart: boolean
+  selectedQuantity: Number
+  sizes: string
+  imageFrontView: String
+  imageBackView: String
+  imageSideView: String
+  imageFullView: String
 
   constructor() {
     this.thumbnailUrl = "",
       this.productPrice = 0,
       this.productName = "",
       this.entity_id = 0,
-      this.isAvailableInCart = false
+      this.isAvailableInCart = false,
+      this.selectedQuantity = 1,
+      this.sizes = '',
+      this.imageFrontView = '',
+      this.imageBackView = '',
+      this.imageSideView = '',
+      this.imageFullView = ''
   }
 }
 

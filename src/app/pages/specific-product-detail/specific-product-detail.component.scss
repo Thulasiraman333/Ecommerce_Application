@@ -1,0 +1,70 @@
+.btn-circle { 
+  width: 45px; 
+  height: 45px; 
+  padding: 6px 0px; 
+  border: 1px solid grey;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #fff;
+  margin:2px;
+} 
+.btn-circle.btn-md { 
+  width: 50px; 
+  height: 50px; 
+  padding: 7px 10px; 
+  border-radius: 25px; 
+  font-size: 10px; 
+  text-align: center; 
+} 
+.btn-circle.btn-xl { 
+  width: 70px; 
+  height: 70px; 
+  padding: 10px 16px; 
+  border-radius: 35px; 
+  font-size: 12px; 
+  text-align: center; 
+} 
+
+.btn-circle:hover{
+  border: 1px solid #EE1C47;
+  color: #EE1C47;
+  font-size: 14px; 
+}
+
+.btn-circle-clicked{
+  width: 45px; 
+  height: 45px; 
+  padding: 6px 0px; 
+  border: 1px solid #EE1C47;
+  color: #EE1C47;
+  font-size: 16px; 
+  font-weight: bold;
+  text-align: center;
+  border-radius: 25px; 
+  background-color: #fff;
+  margin:2px;
+}
+
+.add-bag{
+  background-color: rgb(255, 63, 108);
+  margin-left: 10px;
+  margin-top:20px;
+}
+
+.add-bag:hover{
+  background-color:#EE1C47;
+  font-weight: 600;
+}
+
+.cart{
+  transition: box-shadow 3.30s ease-in;
+  cursor:zoom-in;
+}
+
+.cart:hover{
+  transform: scale(0.96);
+  cursor:zoom-in;
+}
+

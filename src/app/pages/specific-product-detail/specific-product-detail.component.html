@@ -1,0 +1,86 @@
+<div class="product-detail text-center">
+  <div class="row m-4">
+    <div class="col-8">
+      <div class="row">
+        <div class="col-6 mt-2 cart">
+          <a href="#">
+            <img src={{productData.imageFrontView}} alt="inn_logo" class="img-fluid">
+          </a>
+        </div>
+        <div class="col-6 mt-2 cart">
+          <a href="#">
+            <img src={{productData.imageBackView}} alt="inn_logo" class="img-fluid">
+          </a>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-6 cart">
+          <a href="#">
+            <img src={{productData.imageSideView}} alt="inn_logo" class="img-fluid">
+          </a>
+        </div>
+        <div class="col-6 cart">
+          <a href="#">
+            <img src={{productData.imageFullView}} alt="inn_logo" class="img-fluid">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card shadow-lg rounded">
+        <div class="card-title">
+          <h5 class="m-2 text-start fw-bold">{{productData.productName}}</h5>
+          <p class="m-2 text-start text-muted fs-6">Men Brand Logo Printed T-shirt</p>
+        </div>
+        <hr class="hr" />
+        <div class="card-body">
+          <div class="row">
+            <div class="col-3">
+              <h6 class="fw-bolder">{{productData.productPrice | currency : 'INR' : 'symbol': '1.2-2' : 'en-IN' }}</h6>
+            </div>
+            <p class="ms-2 text-start text-success fw-bold">inclusive of all taxes</p>
+            <p class="ms-2 fw-bold text-start text-uppercase">select size</p>
+            <div class="col-8 ps-0">
+              <button type="button" [ngClass]="{'btn-circle' : smallToggle, 'btn-circle-clicked': !smallToggle}"
+                (click)="smallSize()">S</button>
+              <button type="button" [ngClass]="{'btn-circle' : mediumToggle, 'btn-circle-clicked': !mediumToggle}"
+                (click)="mediumSize()">M</button>
+              <button type="button" [ngClass]="{'btn-circle' : largeToggle, 'btn-circle-clicked': !largeToggle}"
+                (click)="largeSize()">L</button>
+              <button type="button"
+                [ngClass]="{'btn-circle' : extraLargeToggle, 'btn-circle-clicked': !extraLargeToggle}"
+                (click)="extraLargeSize()">XL</button>
+              <button type="button" [ngClass]="{'btn-circle' : extraLLToggle, 'btn-circle-clicked': !extraLLToggle}"
+                (click)="extraLLSize()">XXL</button>
+            </div>
+            <div class="row mb-3">
+              @if(this.addedToCart){
+              <button class="text-uppercase btn btn-lg text-white add-bag" style="font-weight: 600;"
+                (click)="addToBag()">
+                <i class="fa fa-shopping-bag m-2" aria-hidden="true"></i>Add to cart
+              </button>
+              }@else {
+              <button class="text-uppercase btn btn-lg text-white add-bag" style="font-weight: 600;"
+                (click)="moveToBag()">
+                Go to cart<i class="fa fa-arrow-right m-2" aria-hidden="true"></i>
+              </button>
+              }
+            </div>
+            <hr class="hr" />
+            <div class="row">
+              <div class="col-12">
+                <p class="text-start fw-bold" style="margin: 0px; padding:0%">{{productData.productPrice | currency :
+                  'INR' : 'symbol': '1.2-2' :
+                  'en-IN' }}</p>
+                <p class="text-start text-muted">Get it by Tue, Dec 03 - 2024</p>
+                <p class="text-start">
+                  Seller:&nbsp;<span class="fw-bold text-danger text-uppercase">THE SOULED STORE PVT. LTD.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

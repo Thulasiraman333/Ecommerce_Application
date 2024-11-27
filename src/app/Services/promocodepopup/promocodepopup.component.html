@@ -1,0 +1,12 @@
+<div class="promocode-popup" mat-dialog-content>
+  <div class="modal-header" style="justify-content: end; margin:5px; cursor: pointer;">
+    <mat-icon (click)="onCloseModal()">close</mat-icon>
+  </div>
+  <div class="modal-body">
+    <p class="text-decoration-uppercase" style="font-size: 18px;">SELECT PROMO CODE</p>
+    <p>There are no applicable promo codes for your account.</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-secondary" (click)="onSubmitCode()">Ok</button>
+  </div>
+</div>
