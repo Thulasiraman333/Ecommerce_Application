@@ -36,6 +36,7 @@ export class HeaderComponent {
   searchFilterData: searchFilterList[] = [];
   productService = inject(ProductService);
   filteredOptions!: Observable<searchFilterList[]>;
+  public isCollapsed = true;
   constructor(private dialog: MatDialog) {
     this.searchFilterData = this.service.getSearchFilterList();
 
